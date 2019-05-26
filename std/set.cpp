@@ -12,6 +12,7 @@ typedef long long int lli;
 typedef pair<lli, lli> P;
 
 int main() {
+    // 重複を許す場合は multiset
     set<int> s;
 
     cout << "----- insert-----" << endl;
