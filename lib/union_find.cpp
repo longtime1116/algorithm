@@ -11,11 +11,8 @@ using namespace std;
 typedef long long int lli;
 typedef pair<lli, lli> P;
 
-int parent[100]; // parent[i]: i が含まれる木の根の番号
-int depth[100];  // depth[i] : i は自身が含まれる木のどれくらいの深さにいるか(最低1)
-                 //            ただし、根の depth のみが参照される
-
-
+lli parent[100001]; // parent[i]: i が含まれる木の根の番号
+lli depth[100001];  // depth[i] : i は自身が含まれる木のどれくらいの深さにいるか(最低1) ただし、根の depth のみが参照される
 
 void init(lli n) {
     REPE(i, 1, n) {
