@@ -56,6 +56,8 @@ int main() {
     //G[4].push_back(6);
     //G[6].push_back(4);
 
+    // 注意: 連結でないグラフの場合は、全頂点ループする必要あり。
+    // その場合、colors[i]が0のときだけ is_bipartite() を呼び出す
     if (is_bipartite(1, 1)) {
         cout << "Yes" << endl;
     }
