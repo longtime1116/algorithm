@@ -32,6 +32,7 @@ bool calc_shortest_path(lli start) {
 
     lli loop_count = 0;
     bool updated;
+    // O(V*E)
     while (true) {
         // V-1 回に収まっていなかったら、負の閉路がある
         // なぜなら、1 ループごとに少なくとも 1 つの最短経路が求まるから
