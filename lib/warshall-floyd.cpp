@@ -11,7 +11,11 @@ using namespace std;
 typedef long long int lli;
 typedef pair<lli, lli> P;
 
-lli dp[301][301];
+// dp[k][i][j]: k 個目までを中間地点として使って良いとしたときの、iとjの最短距離
+//              たどり着けないときはINF、i==jならば0が入る
+//              kを0から|V|まで回せば、全ての点を中間地点として使う場合の全点間最短距離が
+//              算出されていることになる
+lli dp[301][301]; // k 個分用意しなくても上書きしてけば良いので、dp[i][j]のみ用意
 #define INF (LLONG_MAX / 3);
 
 int main() {
