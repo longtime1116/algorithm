@@ -105,7 +105,3 @@ int main() {
 // 問題は↓
 // http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B&lang=jp
 //
-//
-// 単一始点最短経路問題
-// 負の辺が存在する場合はベルマンフォードを使うと良い。O(E*V)
-// 全て正なのであればダイクストラを使うほうが早い。O(E*logV)
