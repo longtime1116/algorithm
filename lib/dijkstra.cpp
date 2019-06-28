@@ -19,12 +19,14 @@ struct edge {
 vector<edge> G[100001];
 lli d[100001];
 lli n;
+lli prev_v[100001]; // 経路復元用
 
 void dijkstra(lli start) {
     REPE(i, 1, n) {
         d[i] = LLONG_MAX;
     }
     d[start] = 0;
+    prev_v[start] = start;
 
     // first が最短経路、second が頂点の番号
     priority_queue<P, vector<P>, greater<P>> que;
@@ -45,6 +47,7 @@ void dijkstra(lli start) {
             if (d[e.to] > d[cur_v] + e.cost) {
                 d[e.to] = d[cur_v] + e.cost;
                 que.push(P(d[e.to], e.to));
+                prev_v[e.to] = cur_v;
             }
         }
     }
@@ -59,10 +62,26 @@ int main() {
         edge e = {b, c};
         G[a].push_back(e);
     }
+    lli start = 1;
 
-    dijkstra(1);
+    dijkstra(start);
+    cout << "----- 最短距離 -----" << endl;
     REPE(i, 1, n) {
         cout << "d[" << i << "]: " << d[i] << endl;
+    }
+    // 1〜n それぞれの経路を出力
+    cout << "----- 最短経路とその距離 -----" << endl;
+    REPE(i, 1, n) {
+        lli cur = i;
+        cout << i << " -> ";
+        while(true) {
+            cur = prev_v[cur];
+            if (cur == start) {
+                cout << start << " (" << d[i] << ")" << endl;
+                break;
+            }
+            cout << cur << " -> ";
+        }
     }
 }
 
