@@ -28,7 +28,7 @@ void dijkstra(lli start) {
     d[start] = 0;
     prev_v[start] = start;
 
-    // first が最短経路、second が頂点の番号
+    // first がその時点での最短経路のコスト、second が頂点の番号
     priority_queue<P, vector<P>, greater<P>> que;
     que.push(P(0, start));
 
