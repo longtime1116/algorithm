@@ -15,7 +15,7 @@ typedef pair<lli, lli> P;
 vector<lli> G[100001];
 lli colors[100001];
 
-lli is_bipartite(lli target, lli color) {
+bool is_bipartite(lli target, lli color) {
     colors[target] = color;
     REP(i, 0, (lli)G[target].size()) {
         lli next = G[target][i];
