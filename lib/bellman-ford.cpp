@@ -25,7 +25,7 @@ lli E;       // 辺の数
 lli r;       // 始点の番号
 
 bool calc_shortest_path(lli start) {
-    REP(i, 0, V) {
+    REPE(i, 0, V) {
         d[i] = LLONG_MAX;
     }
     d[start] = 0;
