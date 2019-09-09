@@ -13,11 +13,13 @@ typedef pair<lli, lli> P;
 
 lli parent[100001]; // parent[i]: i が含まれる木の根の番号
 lli depth[100001];  // depth[i] : i は自身が含まれる木のどれくらいの深さにいるか(最低1) ただし、根の depth のみが参照される
+lli counts[100001]; // counts[find(x)] で、xの含まれる木に所属するnodeの数
 
 void init(lli n) {
     REPE(i, 1, n) {
         parent[i] = i;
         depth[i] = 1;
+        counts[i] = 1;
     }
 }
 
@@ -36,9 +38,13 @@ void unite(lli x, lli y) {
 
     if (depth[x_root] < depth[y_root]) {
         parent[x_root] = y_root;
+        counts[y_root] += counts[x_root];
+        counts[x_root] = 0;
     }
     else {
         parent[y_root] = x_root;
+        counts[x_root] += counts[y_root];
+        counts[y_root] = 0;
         if (depth[x_root] == depth[y_root])
             depth[x_root]++;
     }
@@ -74,4 +80,9 @@ int main() {
     cout << "same(1, 5): " << same(1, 5) << " (answer: 1)" << endl;
     cout << "same(1, 6): " << same(1, 6) << " (answer: 0)" << endl;
     cout << "same(4, 6): " << same(4, 6) << " (answer: 1)" << endl;
+
+    // 個数
+    cout << "counts[find(1)]: " << counts[find(1)] << "(answer: 5)" << endl;
+    cout << "counts[find(6)]: " << counts[find(6)] << "(answer: 3)" << endl;
+    cout << "counts[find(9)]: " << counts[find(9)] << "(answer: 2)" << endl;
 }
