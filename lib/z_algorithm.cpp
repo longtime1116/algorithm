@@ -33,6 +33,12 @@ typedef pair<lli, lli> P;
 typedef tuple<lli, lli, lli> tup;
 
 
+// 何をやっているかの直感的な理解は↓を見ると良い
+// https://www.youtube.com/watch?v=CpZh4eF8QBw
+
+// 012345678
+// aaabaaaab
+// 021034210
 void z_algorithm(const string s, lli *z) {
     lli len = s.length();
 
@@ -49,12 +55,12 @@ void z_algorithm(const string s, lli *z) {
                     break;
                 right++;
             }
-            // right: 3 で break;
             z[i] = right - left;
             right--;
         }
         else {
             lli j = i - left;
+            // z-box の範囲に収まっている場合はそのままz-boxの値を入れれば良い
             if (z[j] < right - i + 1) {
                 z[i] = z[j];
             }
