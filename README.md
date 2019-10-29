@@ -14,6 +14,7 @@
 
 # lib
 * 二分探索(bsearch.cpp)
+* 10進数=>2進数変換(decimal_to_binary.cpp)
 * Union-Find 木
   * 木でグループ分けを表現。nodeの根にあたるものが一致するならば同グループ。
 
