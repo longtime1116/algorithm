@@ -81,7 +81,7 @@ lli comb(lli n, lli k) {
         return 0;
 
     // nCk = n! / (k! * (n-k)!)
-    //     = n! * (k!)^-1 * ((n-k)!)^-1
+    //     ≡ n! * (k!)^-1 * ((n-k)!)^-1 (mod p)
     return fac[n] * (fac_inv[k] * fac_inv[n-k] % MOD) % MOD;
 }
 
