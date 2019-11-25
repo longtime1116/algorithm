@@ -46,8 +46,9 @@
 
 * 数学系
   * 最大公約数(gcd.cpp)
-  * combination計算(comb.cpp)
-    * nCr の計算をパスカルの三角形を使って事前計算する
+  * combination計算
+    * 逆元の算出をうまいことやって求める(comb.cpp)
+    * パスカルの三角形を使って事前計算する(comb_dp.cpp)
   * 素因数分解(factoring.cpp)
   * エラストテネスの篩による素数列挙(sieve.cpp)
   * 繰り返し二乗法により n^p (mod m) を高速に求める(mod_pow.cpp)
