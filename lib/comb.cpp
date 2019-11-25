@@ -36,6 +36,27 @@ typedef tuple<lli, lli, lli> tup;
 typedef vector<lli> vlli;
 
 
+
+
+// <解説>
+// ax + py = 1 を満たす x を a の逆元と呼ぶ
+// p = qa + r として式変形する
+//
+//      qax + qpy = q
+//  <=> (p-r)x + qpy = q
+//  <=> rx + p(-x-qy) = -q ・・・ (1)
+//
+// さて、rx + pz = 1 を満たすx,zをs,tとすると、
+//      rs + pt = 1
+// と表せる。この両辺を q 倍すると、
+//      r(-sq) + p(-tq) = -q ・・・ (2)
+//
+// ここで (1) と (2) を比べてみると、x = -sq は a の逆元となっていることがわかる
+// s は定義より r の逆元であり、q は定義より p を a で割った商となっている
+// したがって、
+//      x = -sq
+//        = r^-1 * (p/a)
+
 const lli MOD = 1000000007;
 const lli MAX = 1000001;
 lli fac[MAX];       // fac[i]     := iの階乗 % MOD
@@ -48,7 +69,7 @@ void init_comb_base() {
     inv[1] = 1;
     REP(i,2,MAX) {
         fac[i] = i * fac[i-1] % MOD; // n! = n * (n-1)! % MOD
-        inv[i] = MOD - inv[MOD % i] * (MOD / i) % MOD; // 以下の☆に解説あり
+        inv[i] = MOD - inv[MOD % i] * (MOD / i) % MOD; // ↑の解説参照
         fac_inv[i] = inv[i] * fac_inv[i-1] % MOD; // n! = n * (n-1)! % MOD
     }
 }
@@ -74,21 +95,3 @@ int main() {
 }
 
 
-// ☆
-// ax + py = 1 を満たす x を a の逆元と呼ぶ
-// p = qa + r として式変形する
-//
-//      qax + qpy = q
-//  <=> (p-r)x + qpy = q
-//  <=> rx + p(-x-qy) = -q ・・・ (1)
-//
-// さて、rx + pz = 1 を満たすx,zをs,tとすると、
-//      rs + pt = 1
-// と表せる。この両辺を q 倍すると、
-//      r(-sq) + p(-tq) = -q ・・・ (2)
-//
-// ここで (1) と (2) を比べてみると、x = -sq は a の逆元となっていることがわかる
-// s は定義より r の逆元であり、q は定義より p を a で割った商となっている
-// したがって、
-//      x = -sq
-//        = r^-1 * (p/a)
